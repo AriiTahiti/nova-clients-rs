@@ -3,7 +3,7 @@
 #[macro_use]
 extern crate error_chain;
 
-#[macro_use]
+#[warn(unused_imports)]
 extern crate serde_json;
 extern crate serde;
 
@@ -12,4 +12,5 @@ pub mod model;
 pub mod errors;
 pub mod market;
 pub mod api;
+pub mod account;
 
