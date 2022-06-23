@@ -1,6 +1,7 @@
 use crate::client::Client;
-use crate::errors::*;
 use crate::model;
+use crate::errors::*;
+
 
 #[derive(Clone)]
 pub struct MarketsClient {
@@ -36,19 +37,9 @@ impl MarketsClient {
             end_time.into()
         );
         let data = self.client.get(endpoint, "".into())?;
-        let candles: model::ResultData<Vec<model::CandleInfo>> =
+        let candles: model::ResultData<Vec<model::MarketData>> =
             serde_json::from_str(data.as_str())?;
         Ok(candles.result)
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn test_get_market() {
-        let client = MarketsClient::new();
-        let ticker = client.get_market("BTC-PERP");
-        println!("{:#?}", ticker);
-    }
-}

@@ -9,6 +9,7 @@ extern crate serde;
 
 pub mod client;
 pub mod model;
+pub mod errors;
 pub mod market;
 pub mod api;
 
