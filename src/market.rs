@@ -43,3 +43,33 @@ impl MarketsClient {
     }
 }
 
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+
+    #[test]
+    fn get_historical() {
+
+        let market = MarketsClient::new();
+
+        let candle = market.get_historical_prices("BTC-PERP", 300, 0, 1655986295);
+
+        match candle {
+            Ok(c) => {
+                println!("candles: {:?}", c);
+            }
+            Err(e) => {
+                println!("Error: {}", e);
+            }
+        }
+    }
+
+
+    
+
+}
+
